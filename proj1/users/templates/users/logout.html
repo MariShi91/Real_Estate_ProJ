@@ -1,0 +1,14 @@
+{% extends "estate/base.html" %}
+
+{% block title %}
+    Real Estate | Log out
+{% endblock %}
+
+{% block content %}
+    <div class="container col-lg-6">
+        <h4 class='alert alert-info'>You have been logged out</h4>
+        <small class="text-muted">
+            <a class="ml-2 btn btn-info button confirm-btn " href="{% url 'login' %}">Log in again</a>
+        </small>   
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "estate/base.html" %}
+
+{% block title %}
+Real Estate
+{% endblock %}
+
+{% block content %}
+  <div class="headerwrap">
+    <div class="text-container">
+      <h2>Let's find a home <br> that's perfect for you</h2>
+      <h4>Search confidently with your trusted sourse of homes <br>for sale or rent</h4>
+    </div>
+    <div class="color-overlay"></div>
+  </div>
+
+  <div class="album py-5 ">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+        {% for ad in ads %}
+          <div class="col">
+            <div class="card shadow-sm" style="height:100%;">
+              <div class="img-container">
+                <img class="bd-placeholder-img card-img-center img-card" src="{{ ad.image.url }}" />
+              </div>
+              <div class="card-body">
+                <div class="price-address">
+                  <p class="price">${{ad.get_price}}</p>
+                  <p class="text-muted small"> {{ad.address}}</p>
+                </div>
+                <p class="short-desc text-center">
+                  {{ad.accomodation_type}} for {{ad.ad_type}} with {{ad.rooms}} rooms <br>({{ad.get_area}} square feet)
+                </p>
+                <div class="profile-info d-flex">
+                  <div class="prof-icon">
+                    <img src="{{ad.author.profile.image.url}}" alt="" class="prof-photo">
+                  </div>
+                  <a href="#" class="small text-decoration-none text-black prof-name">{{ad.author}}</a>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="{% url 'ad-detail' ad.id%}" class="btn btn-sm btn-outline-secondary">View</a>
+                  </div>
+                  <small class="text-muted">{{ad.date_posted}}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>      
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "estate/base.html" %}
+{% block title %} Deleting your ad {% endblock %}
+{% block content %}
+    <div class="container col-lg-6 mt-3">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4"><i class="fa-solid fa-eraser"></i> Delete Form</legend> 
+                <h4 class="alert alert-danger">Are you sure you want to delete your ad?</h4>       
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger button" type="submit">Yes, Delete</button>
+                <a class="btn btn-info confirm-btn button" href="{% url 'ad-detail' object.id %}">Cancel</a>
+            </div>
+        </form>   
+    </div>
+{% endblock %}
